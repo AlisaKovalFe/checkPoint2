@@ -1,0 +1,22 @@
+{
+  "name": "assessment2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test-part-1": "jest part-1/spec/*[sS]pec.js -i",
+    "test-part-2": "jest part-2/spec/*[sS]pec.js -i",
+    "test-part-3": "jest part-3/spec/*[sS]pec.js -i",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jest": "^24.4.2",
+    "jest": "^27.2.0"
+  }
+}
