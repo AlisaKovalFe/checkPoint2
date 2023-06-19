@@ -1,5 +1,8 @@
 class Ticket {
-  constructor() {}
+  constructor(ticketNumber, flightNumber) {
+    this.ticketNumber = ticketNumber
+    this.flightNumber = flightNumber
+  }
 }
 
 module.exports = Ticket;
