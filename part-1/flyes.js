@@ -1,44 +1,48 @@
 class Flight {
-  constructor(args) {
-    this.args = args
+  constructor(args = {}) {
+    this.ticketList = args.ticketList
     this.luggage = []
     this.passengers = []
   }
 
   boarding(passengers) {
-    let checkTickets = this.ticketControl(passengers)
-    return this.passengers = this.checkingBag(checkTickets)
+    this.ticketControl(passengers)
+    this.checkingBag(this.passengers)
   }
 
   checkingBag(passengers) {
-    let copy = JSON.parse(JSON.stringify(passengers));
-    for (let i = 0; i < copy.length; i++) {
-      let obj = {}
-      obj.ticket = passengers[i].ticket
-      obj.luggage = copy[i].luggage
-      this.luggage.push(obj)
-    }
+    this.luggage = passengers.map((el) => {
+      if (el.luggage.length !== 0) return { ticket: el.ticket, luggage: el.luggage }
+    })
+    this.passengers = passengers.map((el) => {
+      el.luggage = []
+      return el
+    })
 
-    passengers.forEach((el) => el.luggage.length = 0)
-    return passengers
+    return this.passengers
   }
 
 
   ticketControl(passengers) {
-    return passengers.filter((el) => this.args.ticketList.includes(el.ticket))
+    this.passengers = passengers.filter((el) => this.ticketList.includes(el.ticket))
+    return this.passengers
   }
 
   baggageСlaim() {
-    let tickets = this.ticketControl(this.passengers)
+    this.passengers.map((el, index) => {
+      if (this.luggage[index].ticket == el.ticket) {
+        el.luggage = this.luggage[index].luggage
+      }
+    })
 
-    for (let i = 0; i < tickets.length; i++) {
-      this.passengers[i].luggage.push(this.luggage[i].luggage[0], this.luggage[i].luggage[1])
-    }
-
-    this.luggage.forEach((el) => el.luggage.length = 0)
-    return passengers
+    this.luggage = []
+    return this.passengers
   }
 }
+
+
+
+
 
 
 
